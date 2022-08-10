@@ -3,10 +3,11 @@ import { MdDarkMode } from 'react-icons/md';
 import styled, { useTheme } from 'styled-components'
 import { rgba } from 'polished'
 import { useCustomTheme } from '../../../../theme/CustomeThemeProvider';
-import { MetronTestTheme } from '../../../../theme/metronTest';
+// import { MetronTestTheme } from '../../../../theme/metronTest';
 export default function NavBar(p: any) {
     const [profile, setProfile] = useState(false)
     const themes = useTheme()
+
     const { themeType, setThemeType } = useCustomTheme();
     console.log('dd', themeType)
     return (

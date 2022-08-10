@@ -35,6 +35,7 @@ const LayoutSection = styled.section`
     position: relative;
     width: 100%;
     height:100vh;
+    overflow-y: scroll;
 }
 .content_section{
     background:#161421;
