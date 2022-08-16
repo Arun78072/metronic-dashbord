@@ -3,7 +3,7 @@ import { MdDarkMode } from 'react-icons/md';
 import styled, { useTheme } from 'styled-components'
 import { rgba } from 'polished'
 import { useCustomTheme } from '../../../../theme/CustomeThemeProvider';
-// import { MetronTestTheme } from '../../../../theme/metronTest';
+
 export default function NavBar(p: any) {
     const [profile, setProfile] = useState(false)
     const themes = useTheme()
@@ -46,6 +46,7 @@ const NAvbarSection = styled.section`
     top: 0px;
     padding: 10px 20px;
     height: 64px;
+    z-index:9;
 .right_navbar svg{
     color:${props => rgba(props.theme.pure, 0.6)};
 }

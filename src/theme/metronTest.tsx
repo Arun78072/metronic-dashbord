@@ -1,12 +1,14 @@
 // import { common } from "@/theme/index";
 
 export const MetronTestTheme = {
-    paper: "#b4f500",
-    primary: "#85127b",
-    base: "#dfb632",
+    paper: "#9c9c9c",
+    primary: "#8ed5ff",
+    base: "#a5a5a5",
     pure: "#ffffff",
-    red: "#66eb19",
-    green: "#3bca89",
-    blue: '#2a2a3c',
+    blue: '#25255a',
+    warning_light: '#ffc700',
+    success: '#50cd89',
+    info: '#7239ea',
+    danger: '#f1416c',
     // ...common,
 };

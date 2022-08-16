@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import MAccordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -16,50 +16,40 @@ export default function SideBar() {
             setExpanded(isExpanded ? panel : false);
         };
     const theme = useTheme()
+    const [menu, setMenu] = useState(true);
+    const width = window.innerWidth;
+    useEffect(() => {
+        if (width <= 768) {
+            setMenu(false)
+        }
+    }, [width])
+    console.log('Menu is ', width)
     return (
-        <SidebarSection>
+        <SidebarSection className='check_this'>
             <LogoSection>
-                <div className="logo"><img src='./images/logo.png' /> Delta</div>
-                <button className="colab_btn"><FontAwesomeIcon icon={faArrowRight} /></button>
+                <div className={menu ? 'logo' : 'logo menu_hide'}><img src='./images/logo.png' /> <p>Delta</p></div>
+                <button className={menu ? 'colab_btn' : 'colab_btn hide'} onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faArrowRight} /></button>
             </LogoSection>
-            <SideMenu theme={theme}>
-                {/* Dashboard Component ++ */}
-                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content" id="panel1bh-header" >
-                        <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                            <span className='menu_title'><FontAwesomeIcon icon={faGrin} /> Dashboard</span>
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            <li className="submenu_list"><a href='#'>One</a></li>
-                            <li className="submenu_list"><a href='#'>One</a></li>
-                            <li className="submenu_list"><a href='#'>One</a></li>
-                        </Typography>
-                        <button className='show_btn'>Show More <FontAwesomeIcon icon={faPlus} /></button>
-                    </AccordionDetails>
-
-                </Accordion>
-                {/* Dashboard Component -- */}
-
+            <SideMenu theme={theme} className={menu ? '' : 'menu_hide'}>
                 {Pages.map((i, ix) => {
                     return (
                         <div key={ix}>
                             <>
-                                <h1 className="title_text">{i.Label}</h1>
+                                <h1 className={menu ? 'title_text' : 'title_text hide'}>{i.Label}</h1>
                                 {i.menus.map((m) => {
                                     return (
-                                        <Accordion expanded={expanded === `pannel${m.id}`} onChange={handleChange(`pannel${m.id}`)}>
+                                        <Accordion expanded={expanded === `pannel${m.id}`} onChange={handleChange(`pannel${m.id}`)} className='text_class'>
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1bh-content"
                                                 id="panel1bh-header"
                                             >
                                                 <Typography sx={{ color: 'text.secondary' }}>
-                                                    <span className='menu_title'>
+                                                    <span className={menu ? 'menu_title' : 'menu_title hide'}>
                                                         {m.icon &&
                                                             <FontAwesomeIcon icon={m.icon} />}
-                                                        {m.name}</span></Typography>
+                                                        <p>{m.name}</p></span>
+                                                </Typography>
                                             </AccordionSummary>
                                             <AccordionDetails>
                                                 <Typography>
@@ -78,12 +68,32 @@ export default function SideBar() {
                     )
                 })}
             </SideMenu>
+            <button className={menu ? 'mobile_close_btn' : 'mobile_close_btn close'} onClick={() => { setMenu(!menu) }}>
+
+            </button>
         </SidebarSection>
     );
 }
 const SidebarSection = styled.div`
     display: flex;
     flex-direction: column;
+    z-index: 999;
+    @media (max-width:786px){
+        position: fixed;
+    }
+.mobile_close_btn{
+    @media (max-width:768px){
+    height: 100%;
+    position: fixed;
+    top: 65px;
+    width: 100%;
+    background: #000000ba;
+    left: 0px;
+    }
+}
+button.mobile_close_btn.close {
+    width: 0px;
+}
 `
 const LogoSection = styled.div`
     color: red;
@@ -98,22 +108,50 @@ const LogoSection = styled.div`
     z-index: 9;
     justify-content: space-between;
     padding-left: 20px;
+    @media (max-width:768px){
+        border:none;
+        gap: 20px;
+    }
 button.colab_btn {
     background-color: #2a2a3c;
     padding: 6px 10px;
     z-index: 9;
     margin-right: -25px;
 }
+button.colab_btn svg {
+    transition: all 0.8s;
+}
+button.colab_btn.hide svg {
+    transform: rotate(180deg);
+}
 .logo img {
     width: 56px;
+    @media (max-width:768px){
+        width: 42px;
+    }
 }
 .logo {
     gap: 14px;
     display: flex;
     align-items: center;
+    position: relative;
+}
+.logo p{
     font-size: 30px;
     color: #de253a;
     font-weight: 900;
+    left: 70px;
+    position: absolute;
+    transition: all 1s;
+    width: 100px;
+    overflow: hidden;
+    @media (max-width:786px){
+        display: none;
+    }
+}
+.logo.menu_hide p {
+    transition: all 1s;
+    width: 0px;
 }
 `
 const SideMenu = styled.section`
@@ -121,21 +159,43 @@ background-color: ${props => props.theme.paper};
 padding: 20px;
 width: 270px;
 overflow-y: scroll;
-    height: 100vh;
+height: 100vh;
+transition: all 1s;
+@media (max-width:768px){
+    padding: 8px;
+    width: 216px;
+}
+&.menu_hide{
+    width: 100px;
+    @media (max-width:786px){
+    left: -100px;
+    }
+}
+@media (max-width:786px){
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    z-index: 1;
+}
+
 h1.title_text{
     color:${props => rgba(props.theme.pure, 0.6)};
     font-size:13px;
     padding: 20px 0px;
+    transition: all 1s;
+    text-align:left;
+}
+h1.title_text.hide {
+    opacity: 0;
 }
 .menu_title{
     color: ${p => rgba(p.theme.pure, 0.6)};
     font-size: 14px;
     display: flex;
     align-items: center;
+    position:relative;
 }
-
 .menu_title svg{
-    padding: 0px 16px 0px 0px;
     font-size: 20px;
 }
 li.submenu_list {
@@ -151,6 +211,16 @@ li.submenu_list {
     width: 100%;
     font-weight: 600;
 }
+.menu_title p {
+    width: 142px;
+    position: absolute;
+    left: 30px;
+    overflow: hidden;
+    text-align:left;
+}
+.menu_title.hide p {
+    width: 0px;
+}
 
 `
 const Accordion = styled(MAccordion)`
@@ -165,6 +235,12 @@ p.MuiTypography{
 svg.MuiSvgIcon-fontSizeMedium{
     color:${props => rgba(props.theme.pure, 0.6)};
     font-size:18px;
+    /* position: absolute;
+    right: 0px;
+    top: -10px; */
+}
+.text_class svg.MuiSvgIcon-fontSizeMedium{
+    display: none !important;
 }
 p.MuiTypography-body1 li{
     color:${props => rgba(props.theme.pure, 0.6)};

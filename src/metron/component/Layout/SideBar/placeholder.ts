@@ -1,20 +1,44 @@
+import { faFileInvoiceDollar , faGrin ,faIdBadge } from '@fortawesome/free-solid-svg-icons'
 
-import { faIdBadge } from '@fortawesome/free-solid-svg-icons'
-import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 
-export const DashboardMenu = [
-{
-    id:1,
-    name:''
-}
-] 
 export const Pages = [
+    {
+        id:0,
+        Label: '',
+        menus : [
+            {
+                id: 1,
+                name: ' Dashboard',
+                icon: faGrin,
+                subMenu: [
+                    {
+                        id: 1,
+                        name: 'Overview',
+                        link: '#',
+                    },
+                    {
+                        id: 2,
+                        name: 'Projects 1',
+                        link: '#',
+                    },
+                    {
+                        id: 3,
+                        name: 'Overview 2',
+                        link: '#',
+                    }
+                ]
+        
+            },
+           
+        ]
+        
+    },
     {
         id:1,
         Label:'PAGES',
         menus : [
             {
-                id: 1,
+                id: 11,
                 name: 'User Profile',
                 icon: faIdBadge,
                 subMenu: [
@@ -37,7 +61,7 @@ export const Pages = [
         
             },
             {
-                id: 2,
+                id: 12,
                 name: 'Accounts',
                 icon: faFileInvoiceDollar,
 
@@ -61,7 +85,7 @@ export const Pages = [
         
             },
             {
-                id: 3,
+                id: 13,
                 name: 'Authentication',
                 icon: faFileInvoiceDollar,
 
@@ -85,7 +109,7 @@ export const Pages = [
         
             },
             {
-                id: 4,
+                id: 14,
                 name: 'Corporate',
                 icon: faFileInvoiceDollar,
 
@@ -109,7 +133,7 @@ export const Pages = [
         
             },
             {
-                id: 5,
+                id: 15,
                 name: 'Social',
                 icon: faFileInvoiceDollar,
 
@@ -133,7 +157,7 @@ export const Pages = [
         
             },
             {
-                id: 6,
+                id: 16,
                 name: 'Blog',
                 icon: faFileInvoiceDollar,
 
@@ -157,7 +181,7 @@ export const Pages = [
         
             },
             {
-                id: 7,
+                id: 17,
                 name: 'FAQ',
                 icon: faFileInvoiceDollar,
 
@@ -181,7 +205,7 @@ export const Pages = [
         
             },
             {
-                id: 8,
+                id: 18,
                 name: 'Pricing',
                 icon: faFileInvoiceDollar,
 
@@ -205,7 +229,7 @@ export const Pages = [
         
             },
             {
-                id: 9,
+                id: 19,
                 name: 'Careers',
                 icon: faFileInvoiceDollar,
 
@@ -229,7 +253,7 @@ export const Pages = [
         
             },
             {
-                id: 10,
+                id: 110,
                 name: 'Utilities',
                 icon: faFileInvoiceDollar,
 
@@ -253,7 +277,7 @@ export const Pages = [
         
             },
             {
-                id: 11,
+                id: 111,
                 name: 'Widgets',
                 icon: faFileInvoiceDollar,
 

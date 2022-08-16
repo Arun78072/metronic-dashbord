@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import SideBar from './SideBar'
 import styled from 'styled-components'
 import Home from '../../../views/Home'
+import ProductOrder from '../productOrder/productOrder'
 
 export default function Layout(p: any) {
     return (
@@ -11,6 +12,8 @@ export default function Layout(p: any) {
             <div className="section_child">
                 <NavBar />
                 <div className="content_section">
+                    <ProductOrder />
+                    {/* <Home />
                     <Home />
                     <Home />
                     <Home />
@@ -21,8 +24,7 @@ export default function Layout(p: any) {
                     <Home />
                     <Home />
                     <Home />
-                    <Home />
-                    <Home />
+                    <Home /> */}
                     {/* {p.children} */}
                 </div>
             </div>

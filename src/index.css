@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  background: #000;
 }
 
 code {
@@ -21,25 +22,26 @@ html {
 @tailwind components;
 @tailwind utilities;
 
-/* Scroll bar css */
 ::-webkit-scrollbar {
   width: 3px;
 }
 
-/* body:hover::-webkit-scrollbar {
-  width: 10px;
-} */
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+select:focus,
+select:active,
+select:focus-visible,
+input:focus-visible {
+  outline: none;
+  border: none;
 }

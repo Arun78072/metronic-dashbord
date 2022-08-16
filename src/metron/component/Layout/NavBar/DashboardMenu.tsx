@@ -8,9 +8,6 @@ import { useCustomTheme } from '../../../../theme/CustomeThemeProvider';
 export default function DashboardMenu() {
     const theme = useCustomTheme();
     const theme2 = useTheme()
-    // const { themeType } = theme;
-    // console.log('---ThemeProvider----', theme2)
-    // console.log('---ThemeProvider----', themeType)
     return (
         <MenuSection>
             <h1 className="test_theme">test this </h1>
