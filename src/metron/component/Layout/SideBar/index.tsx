@@ -8,7 +8,7 @@ import { Pages } from './placeholder';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { ThemeConsumer, useTheme } from 'styled-components'
 import { rgba } from 'polished'
-import { faGrin, faPlus, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faGrin, faPlus, faArrowRight, faBars } from '@fortawesome/free-solid-svg-icons'
 export default function SideBar() {
     const [expanded, setExpanded] = React.useState<string | false>(false);
     const handleChange =
@@ -27,6 +27,7 @@ export default function SideBar() {
     return (
         <SidebarSection className='check_this'>
             <LogoSection>
+                <button className='mobile_menu_btn' onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faBars} /></button>
                 <div className={menu ? 'logo' : 'logo menu_hide'}><img src='./images/logo.png' /> <p>Delta</p></div>
                 <button className={menu ? 'colab_btn' : 'colab_btn hide'} onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faArrowRight} /></button>
             </LogoSection>
@@ -117,7 +118,10 @@ button.colab_btn {
     background-color: #2a2a3c;
     padding: 6px 10px;
     z-index: 9;
-    margin-right: -25px;
+    margin-right: -34px;
+    @media (max-width:768px){
+        display:none;
+    }
 }
 button.colab_btn svg {
     transition: all 0.8s;
@@ -143,7 +147,7 @@ button.colab_btn.hide svg {
     font-weight: 900;
     left: 70px;
     position: absolute;
-    transition: all 1s;
+    transition: width 0.5s;
     width: 100px;
     overflow: hidden;
     @media (max-width:786px){
@@ -151,8 +155,13 @@ button.colab_btn.hide svg {
     }
 }
 .logo.menu_hide p {
-    transition: all 1s;
+    transition: width 0.5s;
     width: 0px;
+}
+.mobile_menu_btn svg {
+    font-size: 22px;
+    margin-top: 16px;
+    color:${p => rgba(p.theme.pure, 0.5)};
 }
 `
 const SideMenu = styled.section`
@@ -161,7 +170,7 @@ padding: 20px;
 width: 270px;
 overflow-y: scroll;
 height: 100vh;
-transition: all 1s;
+transition: width 0.5s;
 @media (max-width:768px){
     padding: 8px;
     width: 216px;
@@ -177,16 +186,16 @@ transition: all 1s;
 } */
 @media (max-width:786px){
     position: absolute;
-    top: 64px;
+    top: 0px;
     left: 0px;
-    z-index: 1;
+    z-index: 9;
 }
 
 h1.title_text{
     color:${props => rgba(props.theme.pure, 0.6)};
     font-size:13px;
     padding: 20px 0px;
-    transition: all 1s;
+    transition: opacity 0.2s;
     text-align:left;
 }
 h1.title_text.hide {
