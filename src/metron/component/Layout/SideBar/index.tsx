@@ -23,7 +23,6 @@ export default function SideBar() {
             setMenu(false)
         }
     }, [width])
-    console.log('Menu is ', width)
     return (
         <SidebarSection className='check_this'>
             <LogoSection>

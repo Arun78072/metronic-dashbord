@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  background: #000;
+  /* background: #171321; */
 }
 
 code {
@@ -27,10 +27,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
+  background: transparent;
+}
+:hover::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+:hover::-webkit-scrollbar-thumb {
   background: #888;
 }
 

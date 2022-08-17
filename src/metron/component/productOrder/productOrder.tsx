@@ -51,7 +51,7 @@ export default function ProductOrder() {
                             <tr key={ix} className="table_data">
                                 <td>
                                     <div className="user_details flex items-center gap-3">
-                                        <img src={i.profile} />
+                                        <img src={i.profile} alt={i.Name} />
                                         <div>
                                             <h2>{i.Name}</h2>
                                             <h3>{i.mail}</h3>
