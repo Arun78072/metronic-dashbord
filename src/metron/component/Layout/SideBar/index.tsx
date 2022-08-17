@@ -158,10 +158,17 @@ button.colab_btn.hide svg {
     transition: width 0.5s;
     width: 0px;
 }
+button.mobile_menu_btn{
+    display:none;
+    @media (max-width:768px){
+        display: block;
+    }
+}
 .mobile_menu_btn svg {
     font-size: 22px;
     margin-top: 16px;
     color:${p => rgba(p.theme.pure, 0.5)};
+   
 }
 `
 const SideMenu = styled.section`
@@ -178,17 +185,17 @@ transition: width 0.5s;
 &.menu_hide{
     width: 84px;
     @media (max-width:786px){
-    left: -100px;
+    left: -230px;
+    width:0px;
     }
 }
-/* &.menu_hide:hover{
-    width: 270px;
-} */
+
 @media (max-width:786px){
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 9;
+    transition: all 0.6s;
 }
 
 h1.title_text{

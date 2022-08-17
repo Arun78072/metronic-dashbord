@@ -45,3 +45,13 @@ input:focus-visible {
   outline: none;
   border: none;
 }
+button:focus,
+button,
+button:active,
+button:visited button:focus-visible {
+  background: none;
+  outline: none;
+  border: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
