@@ -38,20 +38,21 @@ export default function SideBar() {
                                 <h1 className={menu ? 'title_text' : 'title_text hide'}>{i.Label}</h1>
                                 {i.menus.map((m) => {
                                     return (
-                                        <Accordion expanded={expanded === `pannel${m.id}`} onChange={handleChange(`pannel${m.id}`)} className='text_class'>
+                                        <Accordion expanded={expanded === `pannel${m.id}`} onChange={handleChange(`pannel${m.id}`)}>
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1bh-content"
                                                 id="panel1bh-header"
+                                                className={menu ? 'accordian' : 'accordian hide'}
                                             >
-                                                <Typography sx={{ color: 'text.secondary' }}>
+                                                <Typography sx={{ color: 'text.secondary' }} >
                                                     <span className={menu ? 'menu_title' : 'menu_title hide'}>
                                                         {m.icon &&
                                                             <FontAwesomeIcon icon={m.icon} />}
                                                         <p>{m.name}</p></span>
                                                 </Typography>
                                             </AccordionSummary>
-                                            <AccordionDetails>
+                                            <AccordionDetails className={menu ? 'accordian_details' : 'accordian_details hide'}>
                                                 <Typography>
                                                     {m.subMenu.map((menu) => {
                                                         return (
@@ -166,11 +167,14 @@ transition: all 1s;
     width: 216px;
 }
 &.menu_hide{
-    width: 100px;
+    width: 84px;
     @media (max-width:786px){
     left: -100px;
     }
 }
+/* &.menu_hide:hover{
+    width: 270px;
+} */
 @media (max-width:786px){
     position: absolute;
     top: 64px;
@@ -225,7 +229,6 @@ li.submenu_list {
 `
 const Accordion = styled(MAccordion)`
 box-shadow: none !important;
-
 && {
     background-color: transparent;
 }
@@ -235,9 +238,6 @@ p.MuiTypography{
 svg.MuiSvgIcon-fontSizeMedium{
     color:${props => rgba(props.theme.pure, 0.6)};
     font-size:18px;
-    /* position: absolute;
-    right: 0px;
-    top: -10px; */
 }
 .text_class svg.MuiSvgIcon-fontSizeMedium{
     display: none !important;
@@ -259,6 +259,12 @@ div#panel1bh-header:hover .menu_title ,div#panel1bh-header:hover svg.MuiSvgIcon-
 }
 .Mui-expanded .menu_title , .Mui-expanded svg.MuiSvgIcon-fontSizeMedium{
     color: ${p => rgba(p.theme.pure, 1)};
+}
+.accordian.hide .MuiAccordionSummary-expandIconWrapper {
+    display: none;
+}
+.accordian_details.hide {
+    display: none;
 }
 
 `;
