@@ -3,6 +3,7 @@ import { MdDarkMode } from 'react-icons/md';
 import styled, { useTheme } from 'styled-components'
 import { rgba } from 'polished'
 import { useCustomTheme } from '../../../../theme/CustomeThemeProvider';
+import { Link } from 'react-router-dom';
 
 export default function NavBar(p: any) {
     const [profile, setProfile] = useState(false)
@@ -14,6 +15,10 @@ export default function NavBar(p: any) {
         <NAvbarSection theme={themes}>
             <div className='nav_bar '>
                 <div className='right_navbar flex gap-4 items-center justify-end'>
+                    {/* <a href='/table' className='test_link'>Tabel</a> */}
+                    <Link to="/" className='menu_link'>Home</Link>
+                    <Link to="table" className='menu_link'>Table</Link>
+
                     <div className='theme_icon'><button onClick={() => { themeType === 'metronTheme' ? setThemeType('MetronTestTheme') : setThemeType('MetronTheme'); }}><MdDarkMode /></button></div>
                     <div className='profile'>
                         <button onClick={() => { setProfile(!profile) }} ><img src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745' /></button>
@@ -84,5 +89,8 @@ padding:10px 0px;
 }
 .profile_dialog hr{
     margin:20px 0px;
+}
+a.menu_link {
+    color: ${props => props.theme.pure};
 }
 `

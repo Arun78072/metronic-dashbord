@@ -5,12 +5,16 @@ import { faFilter, faArrowDown, faArrowUp, faExclamationCircle } from "@fortawes
 import styled, { useTheme } from "styled-components";
 import { rgba } from "polished"
 import UserProfile from '../../container/userProfile';
+import Overview from './Overview';
+import { Link } from 'react-router-dom';
+import Logs from './Logs';
 export default function UserDetails() {
     const theme = useTheme()
     const [active, SetActive] = useState('Overview')
     return (
         <DetailsSection theme={theme}>
             <div className="section_wrap">
+
                 <div className="filter_section flex justify-between items-center my-4">
                     <div>
                         <h1>View User Details</h1>
@@ -18,24 +22,24 @@ export default function UserDetails() {
                     </div>
                     <div className="flex gap-2">
                         <PrimaryButton><FontAwesomeIcon icon={faFilter} /> Filter</PrimaryButton>
-                        <SecandaryButton>Create</SecandaryButton>
+                        <SecandaryButton><Link to='/edit/emma'>Edit Profile</Link></SecandaryButton>
                     </div>
                 </div>
-                <div className='user_section flex'>
+                <div className='user_section'>
                     <UserProfile />
                     <div className="tab_section">
                         <div className="button_section">
                             <button onClick={() => { SetActive('Overview') }} className={active === 'Overview' ? 'active' : ''}>Overview</button>
                             <button onClick={() => { SetActive('Security') }} className={active === 'Security' ? 'active' : ''}>Security</button>
-                            <button onClick={() => { SetActive('Events') }} className={active === 'Events' ? 'active' : ''}>Events & Logs</button>
+                            <button onClick={() => { SetActive('Logs') }} className={active === 'Logs' ? 'active' : ''}>Logs</button>
                         </div>
                         <div>
                             {active === 'Overview' ?
-                                <div className='tab_tile'>Overview</div>
+                                <div className='tab_tile'><Overview /></div>
                                 : active === 'Security' ?
                                     <div className='tab_tile'>Security</div>
-                                    : active === 'Events' ?
-                                        <div className='tab_tile'>Events</div>
+                                    : active === 'Logs' ?
+                                        <div className='tab_tile'><Logs /></div>
                                         : <></>}
                         </div>
                     </div>
@@ -74,19 +78,14 @@ const DetailsSection = styled.section`
     }
 }
 
-img.profile_pic {
-    width: 100px;
-    margin: 30px auto 10px;
-    border-radius: 50%;
-}
 .user_section{
     @media (max-width:786px){
         flex-direction: column;
     }
 }
 .tab_section{
-    width:70%;
-    padding-left: 34px;
+    width:100%;
+
     @media (max-width:786px){
         width:100%;
         padding-left: 0px;
