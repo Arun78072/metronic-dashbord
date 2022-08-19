@@ -35,6 +35,7 @@ const LayoutSection = styled.section`
     width: 100%;
     height:100vh;
     overflow-y: scroll;
+    background:${p => p.theme.base};
 }
 .content_section{
     background:${p => p.theme.base};

@@ -114,10 +114,10 @@ const ProfileSection = styled.section`
         border-radius: 6px;
         padding: 8px 10px;
         width: 122px;
-
+        
     h1 {
         font-size: 22px;
-        font-weight: 600;
+        font-weight: 700;
         display: flex;
         align-items: center;
         gap: 4px;

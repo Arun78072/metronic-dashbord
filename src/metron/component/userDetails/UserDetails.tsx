@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { PrimaryButton, SecandaryButton } from "../../../component/Buttons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faArrowDown, faArrowUp, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import styled, { useTheme } from "styled-components";
 import { rgba } from "polished"
 import UserProfile from '../../container/userProfile';
 import Overview from './Overview';
 import { Link } from 'react-router-dom';
 import Logs from './Logs';
+import Security from './Security';
 export default function UserDetails() {
     const theme = useTheme()
     const [active, SetActive] = useState('Overview')
@@ -37,7 +38,7 @@ export default function UserDetails() {
                             {active === 'Overview' ?
                                 <div className='tab_tile'><Overview /></div>
                                 : active === 'Security' ?
-                                    <div className='tab_tile'>Security</div>
+                                    <div className='tab_tile'><Security /></div>
                                     : active === 'Logs' ?
                                         <div className='tab_tile'><Logs /></div>
                                         : <></>}
@@ -95,7 +96,8 @@ const DetailsSection = styled.section`
     }
     .button_section button {
         margin-right: 20px;
-        font-size: 18px;
+        font-size: 16px;
+        font-weight: 600;
         border: 2px solid;
         border-width: 0px 0px 2px 0px;
         padding: 14px 0px;

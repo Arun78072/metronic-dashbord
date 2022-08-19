@@ -27,7 +27,9 @@ export default function SideBar() {
         <SidebarSection className='check_this'>
             <LogoSection>
                 <button className='mobile_menu_btn' onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faBars} /></button>
-                <div className={menu ? 'logo' : 'logo menu_hide'}><img src='./images/logo.png' /> <p>Delta</p></div>
+
+                <div className={menu ? 'logo large_logo' : 'logo sm_logo'}><img src={menu ? './svg/m_logo.svg' : './svg/small_logo.svg'} /></div>
+                <div className='small_logo'><img src='./svg/small_logo.svg' /></div>
                 <button className={menu ? 'colab_btn' : 'colab_btn hide'} onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faArrowRight} /></button>
             </LogoSection>
             <SideMenu theme={theme} className={menu ? '' : 'menu_hide'}>
@@ -111,7 +113,7 @@ const LogoSection = styled.div`
     padding-left: 20px;
     @media (max-width:768px){
         border:none;
-        gap: 20px;
+        /* gap: 20px; */
     }
 button.colab_btn {
     background-color: #2a2a3c;
@@ -128,39 +130,40 @@ button.colab_btn svg {
 button.colab_btn.hide svg {
     transform: rotate(180deg);
 }
-.logo img {
-    width: 56px;
+.large_logo img {
+    width: 150px;
     @media (max-width:768px){
         width: 42px;
     }
+}
+.sm_logo img{
+    width: 42px;
 }
 .logo {
     gap: 14px;
     display: flex;
     align-items: center;
     position: relative;
-}
-.logo p{
-    font-size: 30px;
-    color: #de253a;
-    font-weight: 900;
-    left: 70px;
-    position: absolute;
-    transition: width 0.5s;
-    width: 100px;
-    overflow: hidden;
-    @media (max-width:786px){
-        display: none;
+    @media (max-width:768px){
+        display:none;
     }
 }
-.logo.menu_hide p {
-    transition: width 0.5s;
-    width: 0px;
+
+.small_logo{
+    display:none;
+    @media (max-width:768px){
+        display:block;
+    }
 }
+.small_logo img{
+    width: 42px;
+}
+
 button.mobile_menu_btn{
     display:none;
     @media (max-width:768px){
         display: block;
+        width: 50px;
     }
 }
 .mobile_menu_btn svg {

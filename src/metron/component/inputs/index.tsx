@@ -4,7 +4,7 @@ import { rgba } from "polished"
 
 
 
-// InputBox Function 
+// InputBox with label Function 
 function InputBox({ label, placeholder, Required, inputType }: propsType) {
     const theme = useTheme()
     return (
@@ -62,6 +62,108 @@ const InputSection = styled.section`
 
 
 
+
+
+
+
+
+// Label tag Function
+function Label({ label, Required, htmlFor }: labelpropsType) {
+    return (
+        <LabelSection htmlFor={htmlFor} >{label} <span>{Required ? '*' : ''}</span> </LabelSection>
+    )
+}
+export { Label }
+interface labelpropsType {
+    label: string;
+    Required: boolean;
+    htmlFor: string;
+}
+Label.defaultProps = {
+    label: '',
+    Required: false,
+    htmlFor: '',
+};
+const LabelSection = styled.label`
+    display: block;
+    font-weight: 600;
+    color:${p => rgba(p.theme.pure, 0.4)};
+    margin-top: 10px;
+    span{
+        color:${p => p.theme.danger};
+    }
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Input tag function 
+function Input({ inputType, placeholder, htmlFor }: inputpropsType) {
+    return (
+        <InputDiv>
+            <input type={inputType} name={htmlFor} placeholder={placeholder} />
+        </InputDiv>
+    )
+}
+export { Input }
+interface inputpropsType {
+    inputType: string;
+    htmlFor: string;
+    placeholder: string;
+}
+Input.defaultProps = {
+    inputType: 'text',
+    placeholder: '',
+    htmlFor: '',
+};
+const InputDiv = styled.div`
+width:100%;
+    input{
+            color:${p => rgba(p.theme.pure, 0.6)};
+            background:${p => rgba(p.theme.base, 0.5)};
+            border-radius: 6px;
+            width: 100%;
+            margin: 10px 0px;
+            padding: 10px;
+        }
+        input {
+            height: 40px;
+        }
+       
+        /* For Hide Input Number Arrows */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+`
+
+
+
+
+
+
+
+//  
+
+
+
+
+
+
+
+
+
 // TextBox Function 
 function TextBox({ label, Required, height }: TextpropsType) {
     const theme = useTheme()
@@ -108,3 +210,5 @@ width:100%;
             height: 80px;
         }
 `
+
+
