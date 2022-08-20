@@ -28,7 +28,7 @@ export default function SideBar() {
             <LogoSection>
                 <button className='mobile_menu_btn' onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faBars} /></button>
 
-                <div className={menu ? 'logo large_logo' : 'logo sm_logo'}><img src={menu ? './svg/m_logo.svg' : './svg/small_logo.svg'} /></div>
+                <div className={menu ? 'logo large_logo' : 'logo sm_logo'} ><img src={menu ? './svg/m_logo.svg' : './svg/small_logo.svg'} /></div>
                 <div className='small_logo'><img src='./svg/small_logo.svg' /></div>
                 <button className={menu ? 'colab_btn' : 'colab_btn hide'} onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faArrowRight} /></button>
             </LogoSection>

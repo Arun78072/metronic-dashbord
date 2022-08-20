@@ -10,7 +10,7 @@ export default function NavBar(p: any) {
     const themes = useTheme()
 
     const { themeType, setThemeType } = useCustomTheme();
-    console.log('dd', themeType)
+
     return (
         <NAvbarSection theme={themes}>
             <div className='nav_bar '>

@@ -47,9 +47,6 @@ export default function Security() {
     const handleClick = () => {
         inputRef.current.click();
     };
-
-
-
     return (
         <SecuritySection theme={theme}>
             <div className="flex justify-between items-center heading_section">
