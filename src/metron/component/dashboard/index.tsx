@@ -63,6 +63,12 @@ const DashboardSection = styled.section`
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
+        @media (max-width:1024px){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width:450px){
+            grid-template-columns: 1fr;
+        }
         > div{
             background-color:${p => p.theme.paper};
             padding: 20px;
@@ -114,6 +120,9 @@ const DashboardSection = styled.section`
         grid-template-columns: 2fr 1fr;
         gap: 20px;
         margin: 36px 0px 0px 0px;
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
     }
 
 `
