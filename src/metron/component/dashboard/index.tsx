@@ -40,30 +40,6 @@ export default function Dashboard() {
             description: 'Since last month',
         },
     ]
-    // const val = 200;
-    // useEffect(() => {
-    //     for (let i = 0; i < val; i++) {
-    //         // setInterval(() => {
-    //         setNumber(i)
-    //         console.log('------', i)
-    //         // }, 6000)
-    //     }
-
-
-    // }, [])
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     const [count, setCount] = React.useState(0);
 
@@ -82,13 +58,9 @@ export default function Dashboard() {
         },
         [count]
     );
-
-
-    console.log('-----------')
-
     return (
         <DashboardSection theme={theme}>
-            <h1 className="p-10 font-bold"> Count :  {count}</h1>
+            {/* <h1 className="p-10 font-bold"> Count :  {count}</h1> */}
             <div className='top_section'>
                 {Data.map((i, ix) => {
                     return (
