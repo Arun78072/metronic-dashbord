@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 export default function ProductOrder() {
     const theme = useTheme()
-
     return (
         <TabelSection theme={theme}>
             <div className='main_section'>
@@ -38,6 +37,11 @@ export default function ProductOrder() {
                         </div>
                     </div>
                 </div>
+
+
+                {/* Table Data  */}
+
+
                 <table >
                     <tr>
                         <th>Manager</th>

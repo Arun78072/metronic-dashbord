@@ -9,14 +9,11 @@ import Overview from './Overview';
 import { Link } from 'react-router-dom';
 import Logs from './Logs';
 import Security from './Security';
-import Chart from '../charts';
-import Dashboard from '../dashboard';
 export default function UserDetails() {
     const theme = useTheme()
     const [active, SetActive] = useState('Overview')
     return (
         <DetailsSection theme={theme}>
-            <Dashboard />
             <div className="section_wrap">
 
                 <div className="filter_section flex justify-between items-center my-4">
@@ -26,7 +23,8 @@ export default function UserDetails() {
                     </div>
                     <div className="flex gap-2">
                         <PrimaryButton><FontAwesomeIcon icon={faFilter} /> Filter</PrimaryButton>
-                        <SecandaryButton><Link to='/edit/emma'>Edit Profile</Link></SecandaryButton>
+                        {/* <SecandaryButton><Link to='/edit/emma'>Edit Profile</Link></SecandaryButton> */}
+                        <SecandaryButton>Edit Profile</SecandaryButton>
                     </div>
                 </div>
                 <div className='user_section'>
@@ -50,9 +48,9 @@ export default function UserDetails() {
                     <div></div>
 
                 </div>
-                {/* <span style={{ padding: '300px', background: 'black', display: 'block' }}></span> */}
+
             </div>
-            <Chart />
+
         </DetailsSection>
     )
 }

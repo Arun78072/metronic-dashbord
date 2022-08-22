@@ -1,7 +1,4 @@
-import { faFileInvoiceDollar , faGrin ,faIdBadge } from '@fortawesome/free-solid-svg-icons'
-
-
-
+import { faFileInvoiceDollar, faHouseChimney , faUserGroup ,faInfo, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 export const Pages = [
     {
         id:0,
@@ -10,8 +7,8 @@ export const Pages = [
             {
                 id: 1,
                 name: ' Dashboard',
-                icon: faGrin,
-                url : '#',
+                icon: faHouseChimney,
+                url : '/',
                 subMenu: [
                     
                 ]
@@ -27,32 +24,18 @@ export const Pages = [
             {
                 id: 11,
                 name: 'User',
-                icon: faIdBadge,
-                url : '#',
+                icon: faUserGroup,
+                url : 'table',
                 subMenu: [
-                    {
-                        id: 1,
-                        name: 'Overview',
-                        link: '#',
-                    },
-                    {
-                        id: 2,
-                        name: 'Projects 1',
-                        link: '#',
-                    },
-                    {
-                        id: 3,
-                        name: 'Overview 2',
-                        link: '#',
-                    }
+                    
                 ]
         
             },
             {
                 id: 12,
                 name: 'User Detail',
-                icon: faFileInvoiceDollar,
-                url : '#',
+                icon: faInfo,
+                url : 'user',
                 subMenu: [
                     
                 ]
@@ -61,16 +44,28 @@ export const Pages = [
             {
                 id: 13,
                 name: 'Add User ',
-                icon: faFileInvoiceDollar,
-                url : '#',
+                icon: faUserPlus,
+                url : 'adduser',
                 subMenu: [
-                    
+                     // {
+                    //     id: 1,
+                    //     name: 'Overview',
+                    //     link: '#',
+                    // },
+                    // {
+                    //     id: 2,
+                    //     name: 'Projects 1',
+                    //     link: '#',
+                    // },
+                    // {
+                    //     id: 3,
+                    //     name: 'Overview 2',
+                    //     link: '#',
+                    // }
                 ]
         
-            },
-            
+            },            
         ]
         
     },
 ]
-

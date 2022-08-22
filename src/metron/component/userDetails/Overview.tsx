@@ -8,7 +8,8 @@ export default function Overview() {
         <OverviewSection theme={theme}>
             <div className="flex justify-between items-center heading_section">
                 <h1 className="text-[20px] font-semibold">Profile Details</h1>
-                <SecandaryButton><Link to='/edit/emma'>Edit Button</Link></SecandaryButton>
+                {/* <SecandaryButton><Link to='/edit/emma'>Edit Button</Link></SecandaryButton> */}
+                <SecandaryButton>Edit Button</SecandaryButton>
             </div>
 
             <div className="profile_details">

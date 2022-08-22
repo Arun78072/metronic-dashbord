@@ -29,7 +29,7 @@ export default function SideBar() {
 
     console.log('----------', pageLinks[0].menus[0].subMenu.length)
     return (
-        <SidebarSection className='check_this'>
+        <SidebarSection >
 
             <LogoSection>
                 <button className='mobile_menu_btn' onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faBars} /></button>
@@ -62,7 +62,7 @@ export default function SideBar() {
                                             </AccordionSummary>
                                             <AccordionDetails className={menu ? 'accordian_details' : 'accordian_details hide'}>
                                                 <Typography>
-                                                    {m.subMenu.map((menu) => {
+                                                    {m.subMenu.map((menu: any) => {
                                                         return (
                                                             <li className="submenu_list"><a href='#'>{menu.name}</a></li>
                                                         )
@@ -72,12 +72,10 @@ export default function SideBar() {
                                         </Accordion>
                                             :
                                             <>
-                                                <div className="sidebar_menu_links">
-                                                    <Link to='#'><FontAwesomeIcon icon={m.icon} />{m.name}</Link>
+                                                <div className={menu ? 'sidebar_menu_links' : 'sidebar_menu_links hide'}>
+                                                    <Link to={m.url}><FontAwesomeIcon icon={m.icon} /><span>{m.name}</span></Link>
                                                 </div>
                                             </>
-
-
                                     )
                                 })}
                             </>
@@ -95,6 +93,7 @@ const SidebarSection = styled.div`
     display: flex;
     flex-direction: column;
     z-index: 999;
+    background-color:${p => p.theme.pure};
     @media (max-width:786px){
         position: fixed;
     }
@@ -274,6 +273,13 @@ li.submenu_list {
 }
 .sidebar_menu_links a svg {
     font-size: 20px;
+    width: 28px;
+}
+.sidebar_menu_links span {
+    white-space: nowrap;
+}
+.sidebar_menu_links.hide span {
+    visibility:hidden;
 }
 
 `
