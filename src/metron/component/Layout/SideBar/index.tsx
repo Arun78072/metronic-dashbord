@@ -8,39 +8,45 @@ import { Pages } from './placeholder';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { ThemeConsumer, useTheme } from 'styled-components'
 import { rgba } from 'polished'
-import { faGrin, faPlus, faArrowRight, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleLeft, faBars } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 export default function SideBar() {
     const [expanded, setExpanded] = React.useState<string | false>(false);
+    const [menu, setMenu] = useState(true);
+    const [pageLinks, setPageLinks] = useState(Pages)
     const handleChange =
         (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
             setExpanded(isExpanded ? panel : false);
         };
     const theme = useTheme()
-    const [menu, setMenu] = useState(true);
+
     const width = window.innerWidth;
     useEffect(() => {
         if (width <= 768) {
             setMenu(false)
         }
     }, [width])
+
+    console.log('----------', pageLinks[0].menus[0].subMenu.length)
     return (
         <SidebarSection className='check_this'>
+
             <LogoSection>
                 <button className='mobile_menu_btn' onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faBars} /></button>
 
                 <div className={menu ? 'logo large_logo' : 'logo sm_logo'} ><img src={menu ? './svg/m_logo.svg' : './svg/small_logo.svg'} /></div>
                 <div className='small_logo'><img src='./svg/small_logo.svg' /></div>
-                <button className={menu ? 'colab_btn' : 'colab_btn hide'} onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faArrowRight} /></button>
+                <button className={menu ? 'colab_btn' : 'colab_btn hide'} onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faAngleDoubleLeft} /></button>
             </LogoSection>
             <SideMenu theme={theme} className={menu ? '' : 'menu_hide'}>
-                {Pages.map((i, ix) => {
+                {pageLinks.map((i, ix) => {
                     return (
                         <div key={ix}>
                             <>
                                 <h1 className={menu ? 'title_text' : 'title_text hide'}>{i.Label}</h1>
                                 {i.menus.map((m) => {
                                     return (
-                                        <Accordion expanded={expanded === `pannel${m.id}`} onChange={handleChange(`pannel${m.id}`)}>
+                                        m.subMenu.length > 0 ? <Accordion expanded={expanded === `pannel${m.id}`} onChange={handleChange(`pannel${m.id}`)}>
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1bh-content"
@@ -64,6 +70,14 @@ export default function SideBar() {
                                                 </Typography>
                                             </AccordionDetails>
                                         </Accordion>
+                                            :
+                                            <>
+                                                <div className="sidebar_menu_links">
+                                                    <Link to='#'><FontAwesomeIcon icon={m.icon} />{m.name}</Link>
+                                                </div>
+                                            </>
+
+
                                     )
                                 })}
                             </>
@@ -119,13 +133,15 @@ button.colab_btn {
     background-color: #2a2a3c;
     padding: 6px 10px;
     z-index: 9;
-    margin-right: -34px;
+    margin-right: -18px;
+    border-radius: 6px;
     @media (max-width:768px){
         display:none;
     }
 }
 button.colab_btn svg {
     transition: all 0.8s;
+    color:${p => p.theme.primary};
 }
 button.colab_btn.hide svg {
     transform: rotate(180deg);
@@ -242,6 +258,22 @@ li.submenu_list {
 }
 .menu_title.hide p {
     width: 0px;
+}
+.sidebar_menu_links{
+    color: ${p => rgba(p.theme.pure, 0.6)};
+    padding-left: 16px;
+    margin: 12px 0px 10px 0px;
+}
+.sidebar_menu_links:hover{
+    color: ${p => rgba(p.theme.pure, 1)};
+}
+.sidebar_menu_links a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.sidebar_menu_links a svg {
+    font-size: 20px;
 }
 
 `
