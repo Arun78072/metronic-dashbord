@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-import { MetronTestTheme } from './metronTest';
+import { TokyoTheme } from './tokyo';
 import { metronTheme } from './metron';
 import { ThemeProvider } from 'styled-components';
+import { curTheme } from '../App';
 export default function CustomeThemeProvider(p: any) {
-    const [themeType, setThemeType] = useState("metronTheme");
+
+    const [themeType, setThemeType] = useState(curTheme);
     useEffect(() => {
         setThemeType('theme');
     }, []);
@@ -13,8 +15,8 @@ export default function CustomeThemeProvider(p: any) {
         setThemeType(
             themeType === "metronTheme"
                 ? "metronTheme"
-                : themeType === "MetronTestTheme"
-                    ? "MetronTestTheme"
+                : themeType === "tokyo"
+                    ? "tokyo"
                     : "metronTheme"
         );
     }, [themeType]);
@@ -22,8 +24,8 @@ export default function CustomeThemeProvider(p: any) {
     const activeTheme =
         themeType === "metronTheme"
             ? metronTheme
-            : themeType === "MetronTestTheme"
-                ? MetronTestTheme
+            : themeType === "tokyo"
+                ? TokyoTheme
                 : metronTheme;
 
     return (

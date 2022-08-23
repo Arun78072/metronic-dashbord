@@ -26,11 +26,8 @@ export default function SideBar() {
             setMenu(false)
         }
     }, [width])
-
-    console.log('----------', pageLinks[0].menus[0].subMenu.length)
     return (
-        <SidebarSection >
-
+        <SidebarSection className={menu ? 'menu_unhide' : 'menu_hide'}>
             <LogoSection>
                 <button className='mobile_menu_btn' onClick={() => { setMenu(!menu) }}><FontAwesomeIcon icon={faBars} /></button>
 
@@ -73,7 +70,7 @@ export default function SideBar() {
                                             :
                                             <>
                                                 <div className={menu ? 'sidebar_menu_links' : 'sidebar_menu_links hide'}>
-                                                    <Link to={m.url}><FontAwesomeIcon icon={m.icon} /><span>{m.name}</span></Link>
+                                                    <Link to={m.url}><div className="icon"><FontAwesomeIcon icon={m.icon} /></div><span>{m.name}</span></Link>
                                                 </div>
                                             </>
                                     )
@@ -84,7 +81,6 @@ export default function SideBar() {
                 })}
             </SideMenu>
             <button className={menu ? 'mobile_close_btn' : 'mobile_close_btn close'} onClick={() => { setMenu(!menu) }}>
-
             </button>
         </SidebarSection>
     );
@@ -93,8 +89,13 @@ const SidebarSection = styled.div`
     display: flex;
     flex-direction: column;
     z-index: 999;
-    background-color:${p => p.theme.pure};
-    @media (max-width:786px){
+    background-color:${p => p.theme.paper};
+    width: 260px;
+    transition :width 0.4s;
+    &&.menu_hide {
+        width: 90px;
+    }
+        @media (max-width:786px){
         position: fixed;
     }
 .mobile_close_btn{
@@ -129,7 +130,7 @@ const LogoSection = styled.div`
         /* gap: 20px; */
     }
 button.colab_btn {
-    background-color: #2a2a3c;
+    background:${p => p.theme.base};
     padding: 6px 10px;
     z-index: 9;
     margin-right: -18px;
@@ -159,6 +160,7 @@ button.colab_btn.hide svg {
     display: flex;
     align-items: center;
     position: relative;
+    width: 196px;
     @media (max-width:768px){
         display:none;
     }
@@ -168,10 +170,12 @@ button.colab_btn.hide svg {
     display:none;
     @media (max-width:768px){
         display:block;
+        position: fixed;
+        left: 69px;
     }
 }
 .small_logo img{
-    width: 42px;
+    width: 46px;
 }
 
 button.mobile_menu_btn{
@@ -191,7 +195,7 @@ button.mobile_menu_btn{
 const SideMenu = styled.section`
 background-color: ${props => props.theme.paper};
 padding: 20px;
-width: 270px;
+/* width: 270px; */
 overflow-y: scroll;
 height: 100vh;
 transition: width 0.5s;
@@ -200,7 +204,7 @@ transition: width 0.5s;
     width: 216px;
 }
 &.menu_hide{
-    width: 84px;
+    /* width: 84px; */
     @media (max-width:786px){
     left: -230px;
     width:0px;
@@ -262,6 +266,12 @@ li.submenu_list {
     color: ${p => rgba(p.theme.pure, 0.6)};
     padding-left: 16px;
     margin: 12px 0px 10px 0px;
+}
+.sidebar_menu_links .icon {
+    width: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .sidebar_menu_links:hover{
     color: ${p => rgba(p.theme.pure, 1)};
