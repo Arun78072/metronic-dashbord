@@ -5,7 +5,7 @@ export const TokyoTheme = {
     pure: "#ffffff",
     blue: '#141494',
     warning_light: '#ffc700',
-    success: '#50cd89',
+    success: '#57ca22',
     info: '#7239ea',
-    danger: '#f1416c',
+    danger: '#ff1943',
 };

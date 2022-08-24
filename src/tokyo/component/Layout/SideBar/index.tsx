@@ -40,7 +40,7 @@ export default function SideBar() {
                                                     expandIcon={<ExpandMoreIcon />}
                                                     aria-controls="panel1bh-content"
                                                     id="panel1bh-header"
-                                                    className='accordian'>
+                                                    className='accordian accordian_class'>
                                                     <Typography sx={{ color: 'text.secondary' }} >
                                                         <span className='menu_title'>
                                                             {m.icon &&
@@ -77,17 +77,23 @@ export default function SideBar() {
 }
 const SidebarSection = styled.div`
     background-color:${p => p.theme.paper};
-    width:352px;
+    width:270px;
+    border: 2px solid;
+    border-color:${p => rgba(p.theme.pure, 0.2)};
+    border-width: 0px 1px 0px 0px;
     .fit_content {
         width: 80%;
         margin: auto;
-        margin-top: 20px;
+        padding-top: 20px;
     }
     .site_logo {
         width: 58px;
         img{
             width: 100%;
         }
+    }
+    .profile_card{
+        margin-top:20px;
     }
 `
 const SideMenu = styled.section`
@@ -130,6 +136,7 @@ li.submenu_list {
     left: 30px;
     overflow: hidden;
     text-align:left;
+    font-size:14px;
 }
 
 .sidebar_menu_links{

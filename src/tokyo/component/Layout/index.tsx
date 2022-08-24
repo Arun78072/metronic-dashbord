@@ -6,7 +6,7 @@ export default function Layout(p: any) {
     const theme = useTheme()
     return (
         <LayoutSection theme={theme}>
-            <SideBar />
+            <div className='side_bar_child'><SideBar /></div>
             <div className="section_child">
                 <NavBar />
                 <div className="content_section">
@@ -18,6 +18,11 @@ export default function Layout(p: any) {
 }
 const LayoutSection = styled.section`
     display: flex;
+.side_bar_child{
+    @media (max-width:1200px){
+        display: none;
+    }
+}
 .section_child{
     position: relative;
     width: 100%;

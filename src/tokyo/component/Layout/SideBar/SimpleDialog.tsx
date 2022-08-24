@@ -4,13 +4,9 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import MDialog from '@mui/material/Dialog';
-import PersonIcon from '@mui/icons-material/Person';
-import AddIcon from '@mui/icons-material/Add';
-import Typography from '@mui/material/Typography';
-import { blue } from '@mui/material/colors';
 import styled, { useTheme } from 'styled-components';
-import { Link } from 'react-router-dom';
 import { rgba } from 'polished';
+import { Link } from 'react-router-dom';
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -40,7 +36,6 @@ function SimpleDialog(props: SimpleDialogProps) {
                         <p>Lead Developer</p>
                     </div>
                 </div>
-
             </DialogTitle>
             <List sx={{ pt: 0 }}>
                 {emails.map((email) => (
@@ -60,14 +55,13 @@ const emails = ['Profile', 'Inbox', 'Projects'];
 
 const Dialog = styled(MDialog)`
     backdrop-filter: blur(3px);
-    position: absolute;
-    display: block;
-    top: 0px;
-    left: 0px;
     && .MuiDialog-paper {
         background: ${p => p.theme.paper};
         width: 260px;
         padding: 14px;
+    }
+    && .MuiDialog-scrollPaper{
+        display:unset;
     }
     .MuiTypography-h6{
         padding: 14px 10px;

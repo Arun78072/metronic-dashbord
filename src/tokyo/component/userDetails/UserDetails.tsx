@@ -8,7 +8,7 @@ import UserProfile from '../../container/userProfile';
 import Overview from './Overview';
 import { Link } from 'react-router-dom';
 import Logs from './Logs';
-import Security from './Security';
+// import Security from './Security';
 export default function UserDetails() {
     const theme = useTheme()
     const [active, SetActive] = useState('Overview')
@@ -32,17 +32,15 @@ export default function UserDetails() {
                     <div className="tab_section">
                         <div className="button_section">
                             <button onClick={() => { SetActive('Overview') }} className={active === 'Overview' ? 'active' : ''}>Overview</button>
-                            <button onClick={() => { SetActive('Security') }} className={active === 'Security' ? 'active' : ''}>Security</button>
+
                             <button onClick={() => { SetActive('Logs') }} className={active === 'Logs' ? 'active' : ''}>Logs</button>
                         </div>
                         <div>
                             {active === 'Overview' ?
                                 <div className='tab_tile'><Overview /></div>
-                                : active === 'Security' ?
-                                    <div className='tab_tile'><Security /></div>
-                                    : active === 'Logs' ?
-                                        <div className='tab_tile'><Logs /></div>
-                                        : <></>}
+                                : active === 'Logs' ?
+                                    <div className='tab_tile'><Logs /></div>
+                                    : <></>}
                         </div>
                     </div>
                     <div></div>
