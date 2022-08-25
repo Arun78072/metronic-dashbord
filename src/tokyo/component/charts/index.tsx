@@ -1,11 +1,11 @@
 import React from 'react'
 
-import ColumnChart from './ColumnChart'
+// import ColumnChart from './ColumnChart'
 
 export default function Chart() {
     return (
         <div>
-            <ColumnChart />
+            {/* <ColumnChart /> */}
 
         </div>
     )

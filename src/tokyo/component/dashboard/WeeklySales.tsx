@@ -2,8 +2,10 @@
 import styled, { useTheme } from 'styled-components'
 import { rgba } from 'polished'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import ProgressBar from '../progressBar'
+import SplineChart from '../charts/SplineChart'
+import { TokyoPrimaryButton } from '../buttons/PrimaryBtn'
 
 export default function WeeklySales() {
     const theme = useTheme()
@@ -37,8 +39,12 @@ export default function WeeklySales() {
 
                 </div>
             </div>
-            <div className='graph_section'>
-                graph section will do it later
+            <div className='chart_section'>
+                <SplineChart />
+
+            </div>
+            <div className='view_btn'>
+                <TokyoPrimaryButton>View complete report<FontAwesomeIcon icon={faAngleRight} /></TokyoPrimaryButton>
             </div>
 
         </TabelSection >
@@ -94,5 +100,10 @@ const TabelSection = styled.section`
         }
     }
 }
-
+.view_btn {
+    margin: 30px 0px;
+    button{
+    margin: auto;
+    }
+}
 `

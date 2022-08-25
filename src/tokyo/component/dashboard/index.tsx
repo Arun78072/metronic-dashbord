@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { padding, rgba } from 'polished'
 import styled, { useTheme } from 'styled-components'
-import TotalRevenueChart from '../charts/TotalRevenueChart'
-import WeeklySalesChart from '../charts/WeeklySalesChart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faAngleDown, faArrowDown, faFileArrowDown, faSleigh } from '@fortawesome/free-solid-svg-icons';
 import { SecandaryButton } from '../../../component/Buttons';
@@ -10,6 +8,12 @@ import { TokyoPrimaryButton } from '../buttons/PrimaryBtn';
 import UsersAnalytics from './UsersAnalytics';
 import WeeklySales from './WeeklySales';
 import AccountSubscription from './AccountSubscription';
+import DeliveriesOrder from './DeliveriesOrder';
+import Profile from './Profile';
+import Order from './Order';
+import WeeklySales2 from './WeeklySale2';
+import LatestIssues from './LatestIssues';
+import UsersList from './UsersList';
 export default function Dashboard() {
     const theme = useTheme()
     // const [number, setNumber] = useState<any>()
@@ -73,14 +77,32 @@ export default function Dashboard() {
                     )
                 })}
             </div>
+
+
             <div className='progress_section'>
                 <div><UsersAnalytics /></div>
                 <div><AccountSubscription /></div>
                 <div><WeeklySales /></div>
             </div>
-            <div className='graph_section'>
-                <TotalRevenueChart />
-                <WeeklySalesChart />
+
+
+            <div className='mt-[20px]'>
+                <DeliveriesOrder />
+
+            </div>
+
+            <div className='grid-cols-2 grid gap-[20px] mt-[20px]'>
+                <Profile />
+                <Order />
+            </div>
+
+            <div>
+                <WeeklySales2 />
+            </div>
+
+            <div className='grid-cols-2 grid gap-[20px] mt-[20px]'>
+                <LatestIssues />
+                <UsersList />
             </div>
         </DashboardSection >
     )
@@ -151,6 +173,7 @@ const DashboardSection = styled.section`
         grid-row-start: 1;
         grid-row-end: 3;
     }
+
     .graph_section{
         display: grid;
         width: 100%;

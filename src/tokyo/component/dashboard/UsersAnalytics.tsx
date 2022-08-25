@@ -92,6 +92,9 @@ const TabelSection = styled.section`
         width: 80px;
     }
     }
+    td.progress_bar {
+        min-width: 90px;
+    }
     .user_details{
         img {
             max-width: 46px;
@@ -130,6 +133,7 @@ const TabelSection = styled.section`
         width: 90px;
     }
 }
+
 }
 `
 const Order = [

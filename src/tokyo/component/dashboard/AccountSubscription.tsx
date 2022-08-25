@@ -15,14 +15,14 @@ export default function AccountSubscription() {
                     <h2>Accounts</h2>
                     <h1><FontAwesomeIcon icon={faAngleUp} /> 37,594</h1>
                 </span>
-                <div className='progress_circle'> <CircularProgress variant="determinate" value={43} size='100%' className='circle_bar' /></div>
+                <div className='progress_circle'> <CircularProgress variant="determinate" value={43} size='100%' className='circle_bar' /><span className='value'>43%</span></div>
             </div>
             <div className='tile green_tile'>
                 <span>
                     <h2>Subscriptions</h2>
                     <h1><FontAwesomeIcon icon={faPlus} /> 545<span> new</span> </h1>
                 </span>
-                <div className='progress_circle'><CircularProgress variant="determinate" value={76} size='100%' className='circle_bar' /></div>
+                <div className='progress_circle'><CircularProgress variant="determinate" value={76} size='100%' className='circle_bar' /> <span className='value'>76%</span> </div>
             </div>
         </DetailSection>
     )
@@ -68,11 +68,31 @@ const DetailSection = styled.section`
     }
     .progress_circle{
         width:60px;
+        position:relative;
+        span.value {
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 600;
+        }
     }
-    .red_tile .circle_bar svg{
+
+    .red_tile {
+        .circle_bar svg{
         color:${p => p.theme.danger};
         }
-    .green_tile .circle_bar svg{
+        .value{
+            color:${p => p.theme.danger};
+        }
+    }
+
+    .green_tile {
+        .circle_bar svg{
         color:${p => p.theme.success};
         }
+        .value{
+            color:${p => p.theme.success};
+        }
+    }
 `

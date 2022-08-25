@@ -20,12 +20,12 @@ ProgressBar.defaultProps = {
 const Progress = styled.div`
     width:100%;
     border-radius: 50px;
-    height: 10px;
+    height: 8px;
     position: relative;
     & > div{
     position: absolute;
     top: 0px;
-    height: 10px;
+    height: 8px;
     border-radius: 50px;
     left: 0px;
 }
