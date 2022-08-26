@@ -59,7 +59,7 @@ const TabelSection = styled.section`
     border: 1px solid;
     border-color :  ${p => rgba(p.theme.pure, 0.2)};
     @media (max-width:450px){
-            padding: 10px;
+            padding: 0px;
         }
 .heading_section {
     border: 1px solid;
@@ -82,6 +82,9 @@ const TabelSection = styled.section`
 }
 .sale_content {
     padding: 46px;
+    @media (max-width:450px){
+            padding: 20px;
+        }
     h1 {
         font-size: 46px;
         font-weight: 600;

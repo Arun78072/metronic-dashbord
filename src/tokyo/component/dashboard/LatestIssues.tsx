@@ -43,7 +43,7 @@ const IssueSection = styled.section`
     border: 1px solid;
     border-color :  ${p => rgba(p.theme.pure, 0.2)};
     @media (max-width:450px){
-            padding: 10px;
+            padding: 0px;
         }
 .issue_box{  
     table{

@@ -10,14 +10,29 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import Button from '@mui/material/Button';
+
+import { useLottie } from "lottie-react";
+import fire from "../../../assets/Animation/fire.json";
+// import yoga from "../assets/animations/yoga.json";.
+
+
 export default function Profile() {
     const theme = useTheme()
+    const options = {
+        animationData: fire,
+
+        loop: true
+    };
+    const { View } = useLottie(options);
     return (
         <ProfileSection theme={theme}>
             <span className='block text-right ellipsis_icon cursor-pointer'><FontAwesomeIcon icon={faEllipsis} /></span>
             <div className='profile_box text-center'>
-                <img src='https://play-lh.googleusercontent.com/Z2XnSlqHWZ6rgOdWJoOJJbIQIqQHcbDsCrF23Oo1ciu878Vnzqn0chW9-Fe04FPI9tGp' className='profile_pic' />
-                <h1>Shania O'Brien</h1>
+                <div className='fire_image'>
+                    <img src='https://play-lh.googleusercontent.com/Z2XnSlqHWZ6rgOdWJoOJJbIQIqQHcbDsCrF23Oo1ciu878Vnzqn0chW9-Fe04FPI9tGp' className='profile_pic' />
+                    <span className='onhover_fire'>{View}</span>
+                </div>
+                <h1>Ninja Warrior</h1>
                 <button>OFFLINE</button>
                 <p>High performance React template built with lots of powerful components across multiple product niches for fast & perfect apps development processes.</p>
             </div>
@@ -114,6 +129,12 @@ const ProfileSection = styled.section`
             color:${p => p.theme.pure}
         }
     }
+    .buttons{
+        @media (max-width: 450px) {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
     .buttons a {
         background: ${p => rgba(p.theme.base, 0.2)};
         border:1px solid;
@@ -135,5 +156,27 @@ const ProfileSection = styled.section`
             color: ${p => rgba(p.theme.pure, 0.6)};
         }
     }
+
+    .fire_image{
+        position: relative;
+        cursor: pointer;
+    }
+
+    span.onhover_fire {
+        position: absolute;
+        left: 51%;
+        top: 20px;
+        width: 126px;
+        transform: translateX(-50%);
+        opacity:0;
+        transition: all 0.6s ease-out;
+    }
+    .fire_image:hover span.onhover_fire{
+        opacity:1;
+    }
+    .fire_image:hover img.profile_pic{
+                box-shadow:inset 0 0 50px #fff, inset 20px 0 80px #f0f, inset -20px 0 80px #0ff,inset 20px 0 300px #f0f, inset -20px 0 300px #0ff,  0 0 50px #fff,-10px 0 80px #f0f, 10px 0 80px #0ff;
+        }
+
     
 `

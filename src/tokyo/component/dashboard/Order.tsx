@@ -10,7 +10,13 @@ export default function Order() {
     const theme = useTheme()
 
 
-    console.log('dataaa', data)
+    const Delete = (id: number) => {
+        const del = (ary: any) => {
+            return ary.id != id
+        }
+        setData(data.filter(del))
+    }
+
     return (
         <OrderSection theme={theme}>
             <img src='https://tokyo-black-nextjs.bloomui.com/static/images/placeholders/covers/1.jpg' className='image_section' />
@@ -38,7 +44,7 @@ export default function Order() {
                                     <h2>{i.Status_id}</h2>
                                     <h3 className={i.status === 'Deposit' ? 'deposit' : i.status === 'Processing' ? 'processing' : i.status === 'Withdrawal' ? 'withdrawal' : i.status === 'Pending' ? 'pending' : ''}><FiberManualRecordIcon />{i.status}</h3>
                                 </td>
-                                <td className='view_btn'><button><CloseIcon /></button></td>
+                                <td className='view_btn'><button onClick={() => Delete(i.id)}><CloseIcon /></button></td>
                             </tr>
                         )
                     })}

@@ -32,7 +32,11 @@ const DetailSection = styled.section`
     justify-content: center;
     align-items: center;
     gap:20px;
+    @media (max-width:450px){
+           flex-direction: column;
+        }
     .tile{
+        width: 100%;    
         flex: 1;
         background:${p => p.theme.paper};
         border-radius: 10px;

@@ -1,17 +1,18 @@
 import styled, { useTheme } from 'styled-components'
 import { rgba } from 'polished'
 import { Link } from 'react-router-dom'
-import ProgressBar from '../progressBar'
-export default function UsersAnalytics() {
+
+import { SecandaryButton } from '../../../component/Buttons'
+export default function NavigationPills() {
     const theme = useTheme()
     return (
         <TabelSection theme={theme}>
             <div className='heading_section flex justify-between items-center'>
                 <div>
-                    <h2> PROGRESS</h2>
-                    <h1>Users Analytics</h1>
+                    <h1>Navigation Pills</h1>
+                    <h2>This is yet another example for navigation</h2>
                 </div>
-                <h4>PENDING</h4>
+                <SecandaryButton>View all</SecandaryButton>
             </div>
             <div className='table_section'>
                 <table >
@@ -27,14 +28,14 @@ export default function UsersAnalytics() {
                                         </div>
                                     </div>
                                 </td>
-                                <td className='progress_bar'><ProgressBar percentage={i.Percentage} /></td>
-                                <td className='amount'>+{i.Percentage}%</td>
+
                                 <td className='view_btn'><a href={i.Details}>View</a></td>
                             </tr>
                         )
                     })}
                 </table>
             </div >
+            <div className='text-center my-[20px]'><SecandaryButton>VIEW MORE ITEMS</SecandaryButton></div>
         </TabelSection >
     )
 }
@@ -54,7 +55,7 @@ const TabelSection = styled.section`
     border-width: 0px 0px 1px 0px;
     padding: 26px;
     h2 {
-        font-weight: 700;
+        
         color:${props => rgba(props.theme.pure, 0.4)};
     }
     h1{
@@ -62,19 +63,13 @@ const TabelSection = styled.section`
         color:${props => rgba(props.theme.pure, 0.8)};
         font-size:18px;
     }
-    h4 {
-        background: ${props => rgba(props.theme.pure, 0.2)};
-        color:${props => rgba(props.theme.pure, 0.8)};
-        font-size: 12px;
-        padding: 4px 10px;
-        border-radius: 15px;
-    }
 }
 .table_section{
     padding: 30px;
+    height: 330px;
+    overflow-y: scroll;
     @media (max-width:450px){
         padding: 10px;
-        
     }
 
     table{
@@ -88,19 +83,10 @@ const TabelSection = styled.section`
     }
     td {
         padding: 10px;
-        .progress_bar {
-        width: 80px;
+       
     }
-    }
-    td.progress_bar {
-        min-width: 90px;
-    }
+   
     .user_details{
-        @media (max-width:450px){
-            flex-direction: column;
-            align-items: self-start;
-            width: 126px;
-        }
         img {
             max-width: 46px;
             border-radius: 50%;
@@ -115,21 +101,13 @@ const TabelSection = styled.section`
             font-weight:400;
             font-size: 18px;
             text-transform: capitalize;
-            @media (max-width:450px){
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }  
         }
         span{
             color: ${p => p.theme.primary};
             font-weight:500;
             }
     }
-   .amount{
-        color:${props => props.theme.pure};
-        font-weight: 700;
-        font-size: 14px;
-    }
+   
     .view_btn a {
         padding: 6px 14px;
         background: ${props => rgba(props.theme.primary, 0.1)};
@@ -153,7 +131,7 @@ const Order = [
         profile: 'https://tokyo-black-nextjs.bloomui.com/static/images/avatars/1.jpg',
         Locationlink: '#',
         location: 'Tokyo',
-        Percentage: 23,
+
         Details: '#'
     },
     {

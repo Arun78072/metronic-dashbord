@@ -14,6 +14,8 @@ import Order from './Order';
 import WeeklySales2 from './WeeklySale2';
 import LatestIssues from './LatestIssues';
 import UsersList from './UsersList';
+import NavigationPills from './NavigationPills';
+import RecentActivity from './RecentActivity';
 export default function Dashboard() {
     const theme = useTheme()
     // const [number, setNumber] = useState<any>()
@@ -91,7 +93,7 @@ export default function Dashboard() {
 
             </div>
 
-            <div className='grid-cols-2 grid gap-[20px] mt-[20px]'>
+            <div className='tablet_section grid-cols-2 grid gap-[20px] mt-[20px]'>
                 <Profile />
                 <Order />
             </div>
@@ -100,16 +102,25 @@ export default function Dashboard() {
                 <WeeklySales2 />
             </div>
 
-            <div className='grid-cols-2 grid gap-[20px] mt-[20px]'>
+            <div className='tablet_section grid-cols-2 grid gap-[20px] mt-[20px]'>
+                <NavigationPills />
+                <RecentActivity />
+            </div>
+
+            <div className='tablet_section grid-cols-2 grid gap-[20px] mt-[20px]'>
                 <LatestIssues />
                 <UsersList />
             </div>
+
         </DashboardSection >
     )
 }
 const DashboardSection = styled.section`
     color:${p => p.theme.pure};
     padding:20px;
+    @media (max-width: 450px) {
+        padding:10px;
+        }
     .top_section{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -165,15 +176,28 @@ const DashboardSection = styled.section`
         grid-template-columns: 3fr 2fr;
         gap: 20px;
         margin-top: 20px;
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
     }
     .progress_section >div:nth-child(2){
         grid-row-start: 2;
+        @media (max-width: 768px) {
+            grid-row-start: unset;
+        }
     }
     .progress_section >div:nth-child(3){
         grid-row-start: 1;
         grid-row-end: 3;
+        @media (max-width: 768px) {
+            grid-row-start: unset;
+        }
     }
-
+    .tablet_section{
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
     .graph_section{
         display: grid;
         width: 100%;
@@ -186,7 +210,11 @@ const DashboardSection = styled.section`
     }
 `
 const Heading = styled.div`
-
+@media (max-width: 450px){
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
   .content{
     svg {
         font-size: 28px;

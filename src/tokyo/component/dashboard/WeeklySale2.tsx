@@ -6,6 +6,7 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import ProgressBar from '../progressBar'
 import SplineChart from '../charts/SplineChart'
 import { Link } from 'react-router-dom';
+import LineChart from '../charts/LineChart';
 
 export default function WeeklySales2() {
     const [data, setData] = useState(Dataa)
@@ -54,7 +55,7 @@ export default function WeeklySales2() {
                     <h2>Total Orders</h2>
                     <Link to='' className='view_all'>View all</Link>
                     <div>
-                        graph
+                        <LineChart />
                     </div>
                 </div>
                 <div className='total_visitors'>
@@ -62,21 +63,21 @@ export default function WeeklySales2() {
                     <h1>576</h1>
                     <h2>Total Visitors</h2>
                     <div>
-                        graph
+                        <LineChart />
                     </div>
                 </div>
                 <div className='total_deliveries'>
                     <h1>183,954</h1>
                     <h2>Total Deliveries</h2>
                     <div>
-                        graph
+                        <LineChart />
                     </div>
                 </div>
                 <div className='total_budget'>
                     <h1>$13,253</h1>
                     <h2>Total Budget</h2>
                     <div>
-                        graph
+                        <LineChart />
                     </div>
                 </div>
             </div>
@@ -90,6 +91,9 @@ const OrderData = styled.section`
     grid-template-columns: 3fr 4fr;
     gap: 20px;
     margin-top: 20px;
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
 .section_box{
         background:${props => props.theme.paper};
         color:${props => rgba(props.theme.pure, 0.6)};
@@ -98,7 +102,7 @@ const OrderData = styled.section`
         border: 1px solid;
         border-color :  ${p => rgba(p.theme.pure, 0.2)};
         @media (max-width:450px){
-                padding: 10px;
+                padding: 0px;
             }
             .heading_section {
             padding: 26px;
@@ -164,6 +168,9 @@ const OrderData = styled.section`
     display:grid;
     grid-template-columns:repeat(2, 1fr);
     gap: 20px;
+    @media (max-width:450px) {
+        grid-template-columns:1fr;
+    }
     & > div {
         border-radius: 10px;
         height:100%;

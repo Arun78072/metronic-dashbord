@@ -38,12 +38,15 @@ export default function DeliveriesOrder() {
     )
 }
 const OrderSection = styled.section`
-    
+
     background:${p => p.theme.paper};
     border-radius: 10px;
     border: 1px solid;
     border-color:  ${p => rgba(p.theme.pure, 0.2)};
     display:flex;
+    @media (max-width:450px){
+           flex-direction: column;
+        }
     &> div{
         flex:1;
         padding: 20px;
@@ -52,6 +55,9 @@ const OrderSection = styled.section`
         border:1px solid;
         border-width:0px 1px 0px 0px;
         border-color: ${p => rgba(p.theme.pure, 0.2)};
+        @media (max-width:450px){
+           border:none;
+        }
     }
     .heading_section {
             margin-bottom:20px; 

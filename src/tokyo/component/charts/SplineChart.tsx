@@ -18,7 +18,8 @@ const TravelDetailsView = () => {
   const chartData: ApexOptions = {
 
     chart: {
-      height: 350,
+      height: 'auto',
+      width: '100%',
       type: 'area',
       toolbar: {
         show: false
@@ -39,7 +40,13 @@ const TravelDetailsView = () => {
       categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"],
       labels: {
         show: false,
-      }
+      },
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false,
+      },
     },
     yaxis: {
       labels: {
@@ -83,6 +90,9 @@ const SplineSection = styled.section`
   }
   .apexcharts-svg{
     background-color:transparent  !important;
-    
+  }
+  .apexcharts-tooltip {
+    background: #2aff5f;
+    color: #000000;
   }
 `
