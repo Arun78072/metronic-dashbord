@@ -99,7 +99,7 @@ const LineChart = () => {
 
 export default LineChart;
 const SplineSection = styled.section`
-  width:100%;
+  width:auto;
   border-radius:10px;
   h1.title{
     font-size: 18px;
