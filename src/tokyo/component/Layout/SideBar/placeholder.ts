@@ -13,17 +13,17 @@ export const PagesLink = [
                     {
                        id: 1,
                        name: 'Reports',
-                       link: '#',
+                       link: '/',
                    },
                    {
                        id: 2,
                        name: 'Expenses',
-                       link: '#',
+                       link: 'expenses',
                    },
                    {
                        id: 3,
                        name: 'Products',
-                       link: '#',
+                       link: 'products',
                    }
                ]
         

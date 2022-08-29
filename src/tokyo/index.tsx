@@ -1,25 +1,23 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-// import { ThemeProvider } from 'styled-components';
 import CustomeThemeProvider from '../theme/CustomeThemeProvider';
 import Layout from './component/Layout'
-// import AddUser from './views/AddUser';
-import HomePage from './views/Dashboard';
-import UserDetailsPage from './views/UserDetailsPage';
-import Users from './views/Users';
+import ExpensesPage from './views/Expenses';
+import Products from './views/Products';
+import Reports from './views/Reports';
+
+
 export default function Metron() {
     return (
         <div>
             <CustomeThemeProvider>
                 <Layout>
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/table" element={<Users />} />
-                        <Route path="/user" element={<UserDetailsPage />} />
-                        {/* <Route path="/adduser" element={<AddUser />} /> */}
+                        <Route path="/" element={<Reports />} />
+                        <Route path="/expenses" element={<ExpensesPage />} />
+                        <Route path="/products" element={<Products />} />
                     </Routes>
                 </Layout>
-                {/* <Route path="/edit/:name" element={<EditContact />} /> */}
             </CustomeThemeProvider>
         </div>
     )

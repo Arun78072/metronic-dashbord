@@ -52,7 +52,7 @@ export default function SideBar() {
                                                     <Typography>
                                                         {m.subMenu.map((menu: any) => {
                                                             return (
-                                                                <li className="submenu_list"><a href='#'>{menu.name}</a></li>
+                                                                <li className="submenu_list"><Link to={menu.link}>{menu.name}</Link></li>
                                                             )
                                                         })}
                                                     </Typography>

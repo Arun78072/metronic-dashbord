@@ -82,7 +82,6 @@ export default SplineChart;
 const SplineSection = styled.section`
   width:100%;
   background-color:${p => p.theme.paper} !important;
-  padding: 10px;
   border-radius:10px;
   h1.title{
     font-size: 18px;
