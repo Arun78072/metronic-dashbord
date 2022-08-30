@@ -64,7 +64,6 @@ const OrderSection = styled.section`
     span.live_span {
         position: absolute;
         top: 10px;
-        z-index: 9999;
         right: 16px;
         background: ${p => p.theme.primary};
         padding: 0px 12px;

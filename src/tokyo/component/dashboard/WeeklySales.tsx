@@ -58,6 +58,7 @@ const TabelSection = styled.section`
     height:100%;
     border: 1px solid;
     border-color :  ${p => rgba(p.theme.pure, 0.2)};
+    overflow: hidden;
     @media (max-width:450px){
             padding: 0px;
         }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { padding, rgba } from 'polished'
+import { rgba } from 'polished'
 import styled, { useTheme } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faAngleDown, faArrowDown, faFileArrowDown, faSleigh } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faArrowDown, faFileArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { SecandaryButton } from '../../../component/Buttons';
 import { TokyoPrimaryButton } from '../buttons/PrimaryBtn';
 import UsersAnalytics from './UsersAnalytics';
@@ -16,14 +16,20 @@ import LatestIssues from './LatestIssues';
 import UsersList from './UsersList';
 import NavigationPills from './NavigationPills';
 import RecentActivity from './RecentActivity';
+import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
+
+
+import SnowmobileOutlinedIcon from '@mui/icons-material/SnowmobileOutlined';
+import YardOutlinedIcon from '@mui/icons-material/YardOutlined';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import ControlPointOutlinedIcon from '@mui/icons-material/ControlPointOutlined';
 export default function Dashboard() {
     const theme = useTheme()
-    // const [number, setNumber] = useState<any>()
     const Data = [
         {
             id: 1,
             title: 'Orders',
-            icon: faSleigh,
+            icon: <ListAltIcon />,
             number: '$3,594',
             priceicon: faArrowDown,
             description: '+36% from last month',
@@ -31,23 +37,23 @@ export default function Dashboard() {
         {
             id: 2,
             title: 'Reports',
-            icon: faSleigh,
+            icon: <ControlPointOutlinedIcon />,
             number: '987',
-            priceicon: faArrowDown,
+            priceicon: faArrowUp,
             description: '+65% from last month',
         },
         {
             id: 3,
             title: 'Customers',
-            icon: faSleigh,
+            icon: <YardOutlinedIcon />,
             number: '17,865',
-            priceicon: faArrowDown,
+            priceicon: faArrowUp,
             description: '+22% from last month',
         },
         {
             id: 4,
             title: 'Sales',
-            icon: faSleigh,
+            icon: <SnowmobileOutlinedIcon />,
             number: '$65,489',
             priceicon: faArrowDown,
             description: '-15.35% from last month',
@@ -57,7 +63,7 @@ export default function Dashboard() {
         <DashboardSection theme={theme}>
             <Heading className='flex items-center justify-between pb-5'>
                 <div className='content flex gap-4 items-center'>
-                    <FontAwesomeIcon icon={faBell} />
+                    <AddAlertOutlinedIcon />
                     <span>
                         <h1>Reports</h1>
                         <p>Custom dashboard built using the included components</p>
@@ -72,7 +78,7 @@ export default function Dashboard() {
                 {Data.map((i, ix) => {
                     return (
                         <div key={ix}>
-                            <div className='title flex items-center gap-2'><span><FontAwesomeIcon icon={i.icon} /></span><h2>{i.title}</h2> </div>
+                            <div className='title flex items-center gap-2'><span className={i.title}>{i.icon}</span><h2>{i.title}</h2> </div>
                             <h1 className='price'><FontAwesomeIcon icon={i.priceicon} />{i.number}</h1>
                             <p>{i.description} </p>
                         </div>
@@ -141,20 +147,31 @@ const DashboardSection = styled.section`
             .title {
                 svg {
                 border-radius: 50%;
-                background: linear-gradient(120deg, rgb(246, 211, 101) 0%, rgb(253, 160, 133) 100%);
                 padding: 14px;
-                font-size: 28px;
+                font-size: 50px;
                 aspect-ratio: 1;
+                }
+                span.Orders svg {
+                    background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+                }
+                span.Reports svg {
+                    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+                }
+                span.Customers svg {
+                    background: #57ca22;
+                }
+                span.Sales svg {
+                    background: #8c7cf0;
                 }
                 h2{
                     font-weight:600;
-                    color : ${p => rgba(p.theme.pure, 0.6)};
+                    color : ${p => rgba(p.theme.pure, 0.4)};
                     font-size: 18px;
                 }
                
             }
             h1.price{
-                color : ${p => rgba(p.theme.pure, 0.6)};
+                color : ${p => rgba(p.theme.pure, 0.8)};
                 font-size: 34px;
                 font-weight: 600;
                 display: flex;
@@ -164,6 +181,7 @@ const DashboardSection = styled.section`
             }
             .price svg {
                 font-size: 20px;
+                color:#57ca22;
             }
             p{
                 color : ${p => rgba(p.theme.pure, 0.4)};
@@ -217,8 +235,8 @@ const Heading = styled.div`
 }
   .content{
     svg {
-        font-size: 28px;
-        padding: 18px;
+        font-size: 58px;
+    padding: 14px;
         background: ${p => rgba(p.theme.pure, 0.2)};
         color:${p => p.theme.primary};
         border-radius: 10px;

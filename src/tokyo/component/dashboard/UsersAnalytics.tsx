@@ -11,7 +11,7 @@ export default function UsersAnalytics() {
                     <h2> PROGRESS</h2>
                     <h1>Users Analytics</h1>
                 </div>
-                <h4>PENDING</h4>
+                <h4>Pending</h4>
             </div>
             <div className='table_section'>
                 <table >
@@ -63,11 +63,13 @@ const TabelSection = styled.section`
         font-size:18px;
     }
     h4 {
-        background: ${props => rgba(props.theme.pure, 0.2)};
-        color:${props => rgba(props.theme.pure, 0.8)};
-        font-size: 12px;
-        padding: 4px 10px;
-        border-radius: 15px;
+        background: ${props => rgba(props.theme.pure, 0.6)};
+        color:${props => rgba(props.theme.base, 0.8)};
+        font-size: 11px;
+        padding: 4px 12px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        
     }
 }
 .table_section{
